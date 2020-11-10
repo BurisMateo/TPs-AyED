@@ -12,7 +12,7 @@ def cargarArboles(datos, arbol=arbolAVL()):
 
             for row in reader:
                 if row != lista:
-                    arbol.insert(row)
+                    arbol.insertar(row)
 
     except FileNotFoundError:
         print('¡Error, el fichero o directorio no existe!')
