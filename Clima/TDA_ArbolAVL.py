@@ -12,14 +12,14 @@ class arbolAVL:
     def __init__(self):
         self.root = None
 
-    def insertar(self, key):
+    def insert(self, key):
 
         if self.root == None:
             self.root = Nodo(key)
         else:
-            self._insertar(key, self.root)
+            self._insert(key, self.root)
 
-    def _insertar(self, key, nodo_actual):
+    def _insert(self, key, nodo_actual):
 
         if key < nodo_actual.key:
 
@@ -29,7 +29,7 @@ class arbolAVL:
                 self._inspeccionar_insercion(nodo_actual.left)
 
             else:
-                self._insertar(key, nodo_actual.left)
+                self._insert(key, nodo_actual.left)
 
         elif key > nodo_actual.key:
             if nodo_actual.right == None:
@@ -38,26 +38,26 @@ class arbolAVL:
                 self._inspeccionar_insercion(nodo_actual.right)
 
             else:
-                self._insertar(key, nodo_actual.right)
+                self._insert(key, nodo_actual.right)
         else:
             print("¡La clave (key) ya esta en el árbol!")
 
-    def _altura(self, nodo_actual, altura_actual):
+    def _height(self, nodo_actual, altura_actual):
 
         if nodo_actual == None:
             return altura_actual
 
-        altura_izquierda = self._altura(
+        altura_izquierda = self._height(
             nodo_actual.left, altura_actual + 1)
-        altura_derecha = self._altura(
+        altura_derecha = self._height(
             nodo_actual.right, altura_actual + 1)
 
         return max(altura_izquierda, altura_derecha)
 
-    def altura(self):
+    def height(self):
 
         if self.root != None:
-            return self._altura(self.root, 0)
+            return self._height(self.root, 0)
 
         else:
             return 0
